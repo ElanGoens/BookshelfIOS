@@ -21,6 +21,8 @@ struct LoginView: View {
                     .offset(y: -60)
                 
                 
+                
+                
                 NavigationLink(destination: HomeView(), label: {
                     Text("Next screen").bold().frame(width: 280, height: 50)
                         .background(Color.blue)
@@ -36,13 +38,19 @@ struct LoginView: View {
 
 struct InputFieldsView: View{
     //soort van observer pattern, als username verandert gebeurt er een rerender
-    @State var username: String = ""
-    @State var password: String = ""
+    
+    
+    @StateObject private var authenticationViewModel = AuthenticationViewModel()
     
     var body: some View{
         VStack() {
-            TextField("Username", text: $username).padding().background(lightGreyColor).cornerRadius(5.0)
-            SecureField("Password", text: $password).padding().background(lightGreyColor).cornerRadius(5.0)
+            TextField("Username", text: $authenticationViewModel.username).padding().background(lightGreyColor).cornerRadius(5.0)
+            SecureField("Password", text: $authenticationViewModel.password).padding().background(lightGreyColor).cornerRadius(5.0)
+            Button("Login"){
+                print(authenticationViewModel.username)
+                print(authenticationViewModel.password)
+                authenticationViewModel.login()
+            }
         }
     }
 }

@@ -16,6 +16,7 @@
 		E49D6F75275A429F00DE429F /* BookshelfIOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F74275A429F00DE429F /* BookshelfIOSUITestsLaunchTests.swift */; };
 		E49D6F82275A5B3100DE429F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F81275A5B3100DE429F /* HomeView.swift */; };
 		E49D6F86275A5FEC00DE429F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F85275A5FEC00DE429F /* LoginService.swift */; };
+		E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E49D6F74275A429F00DE429F /* BookshelfIOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfIOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E49D6F81275A5B3100DE429F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E49D6F85275A5FEC00DE429F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		E49D6F56275A429E00DE429F /* BookshelfIOS */ = {
 			isa = PBXGroup;
 			children = (
+				E49D6F87275A639900DE429F /* ViewModels */,
 				E49D6F84275A5D5500DE429F /* Views */,
 				E49D6F83275A5D4500DE429F /* Services */,
 				E49D6F57275A429E00DE429F /* BookshelfIOSApp.swift */,
@@ -147,6 +150,14 @@
 				E49D6F81275A5B3100DE429F /* HomeView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E49D6F87275A639900DE429F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49D6F82275A5B3100DE429F /* HomeView.swift in Sources */,
+				E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */,
 				E49D6F5A275A429E00DE429F /* LoginView.swift in Sources */,
 				E49D6F58275A429E00DE429F /* BookshelfIOSApp.swift in Sources */,
 				E49D6F86275A5FEC00DE429F /* LoginService.swift in Sources */,
