@@ -17,6 +17,8 @@
 		E49D6F82275A5B3100DE429F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F81275A5B3100DE429F /* HomeView.swift */; };
 		E49D6F86275A5FEC00DE429F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F85275A5FEC00DE429F /* LoginService.swift */; };
 		E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */; };
+		E4F4C647275AD7E800B7D556 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C646275AD7E800B7D556 /* BookListView.swift */; };
+		E4F4C649275ADA2600B7D556 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C648275ADA2600B7D556 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		E49D6F81275A5B3100DE429F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E49D6F85275A5FEC00DE429F /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		E4F4C646275AD7E800B7D556 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
+		E4F4C648275ADA2600B7D556 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,8 @@
 			children = (
 				E49D6F59275A429E00DE429F /* LoginView.swift */,
 				E49D6F81275A5B3100DE429F /* HomeView.swift */,
+				E4F4C646275AD7E800B7D556 /* BookListView.swift */,
+				E4F4C648275ADA2600B7D556 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +297,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49D6F82275A5B3100DE429F /* HomeView.swift in Sources */,
+				E4F4C649275ADA2600B7D556 /* MainView.swift in Sources */,
+				E4F4C647275AD7E800B7D556 /* BookListView.swift in Sources */,
 				E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */,
 				E49D6F5A275A429E00DE429F /* LoginView.swift in Sources */,
 				E49D6F58275A429E00DE429F /* BookshelfIOSApp.swift in Sources */,

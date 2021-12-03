@@ -9,13 +9,25 @@ import SwiftUI
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0)
 
-
+struct StartView: View{
+    
+    @StateObject private var authenticationViewModel = AuthenticationViewModel()
+    
+    var body: some View{
+        if !authenticationViewModel.isAuthenticated{
+            return AnyView(LoginView())
+        } else {
+            return AnyView(HomeView())
+        }
+    }
+}
 
 struct LoginView: View {
 
     var body: some View {
         NavigationView{
             VStack{
+                
                 InputFieldsView()
                     .navigationTitle("Login")
                     .offset(y: -60)
@@ -29,6 +41,8 @@ struct LoginView: View {
                         .foregroundColor(Color.white)
                         .cornerRadius(10)
                 })
+                
+                
             }
 
         }
@@ -43,6 +57,7 @@ struct InputFieldsView: View{
     @StateObject private var authenticationViewModel = AuthenticationViewModel()
     
     var body: some View{
+        
         VStack() {
             TextField("Username", text: $authenticationViewModel.username).padding().background(lightGreyColor).cornerRadius(5.0)
             SecureField("Password", text: $authenticationViewModel.password).padding().background(lightGreyColor).cornerRadius(5.0)
@@ -50,6 +65,7 @@ struct InputFieldsView: View{
                 print(authenticationViewModel.username)
                 print(authenticationViewModel.password)
                 authenticationViewModel.login()
+                
             }
         }
     }

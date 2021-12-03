@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  BookListView.swift
 //  BookshelfIOS
 //
 //  Created by Elan Goens on 03/12/2021.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct BookListView: View {
     var body: some View {
-        Text("Home")
+        Text("Book list")
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct BookListView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        BookListView()
     }
 }
