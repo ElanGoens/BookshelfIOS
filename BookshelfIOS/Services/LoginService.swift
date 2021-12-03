@@ -15,23 +15,33 @@ class LoginService{
             return
         }
         
-        let body = LoginRequestBody(username: username, password: password)
+        let body = LoginRequestBody(email: username, password: password)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         
+        let printsel = try? JSONDecoder().decode(LoginRequestBody.self, from: request.httpBody!)
+        print(printsel)
+        
+        print("body")
+        print(request.httpBody)
+        print("body")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(.failure(.custom(errorMessage: "No Data")))
                 return
             }
             
+            print(data)
+            
             guard let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
                 completion(.failure(.invalidCredentials))
                 return
             }
+            
+            print(loginResponse.token)
             
             guard let token = loginResponse.token else{
                 completion(.failure(.invalidCredentials))
@@ -51,11 +61,12 @@ enum AuthenticationError: Error{
 }
 
 struct LoginRequestBody : Codable{
-    let username: String
+    let email: String
     let password: String
 }
 
-struct LoginResponse : Codable{
+struct LoginResponse : Decodable{
     let token: String?
+   
     
 }
