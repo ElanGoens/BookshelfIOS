@@ -8,8 +8,46 @@
 import SwiftUI
 
 struct BookListView: View {
+    
+    @StateObject private var bookViewModel = BookViewModel()
+    
     var body: some View {
-        Text("Book list")
+        NavigationView{
+            List(bookViewModel.books){ book in
+                HStack{
+                    AsyncImage(url: URL(string: book.image)) { phase in
+                        if let image = phase.image{
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150)
+                                
+                        } else if phase.error != nil{
+                            Image("footer").resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150)
+                        } else{
+                            Image("footer").resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 150)
+                        }
+                    }
+                    VStack{
+                        Text(book.titel)
+                            .fontWeight(.bold)
+                        Text(book.auteurNaam)
+                        
+
+                    }
+                    
+                }
+        }.navigationTitle("Catalogus")
+        
+            
+        }.onAppear{
+            bookViewModel.getAllBooks()
+            
+        }
     }
 }
 

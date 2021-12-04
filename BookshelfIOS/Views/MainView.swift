@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var bookViewModel = BookViewModel()
     var body: some View {
         TabView{
             HomeView().tabItem(){
@@ -15,10 +16,15 @@ struct MainView: View {
             }
             
             BookListView().tabItem(){
-                Text("Book list")
+                Text("Catalogus")
+            }.task {
+                bookViewModel.getAllBooks()
             }
         }
-    }
+       
+       
+   }
+    
 }
 
 struct MainView_Previews: PreviewProvider {

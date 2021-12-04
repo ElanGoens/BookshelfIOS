@@ -19,6 +19,9 @@
 		E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */; };
 		E4F4C647275AD7E800B7D556 /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C646275AD7E800B7D556 /* BookListView.swift */; };
 		E4F4C649275ADA2600B7D556 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C648275ADA2600B7D556 /* MainView.swift */; };
+		E4F4C64C275B706900B7D556 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64B275B706900B7D556 /* Book.swift */; };
+		E4F4C64E275B721200B7D556 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64D275B721200B7D556 /* BookService.swift */; };
+		E4F4C650275B76AE00B7D556 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		E4F4C646275AD7E800B7D556 /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		E4F4C648275ADA2600B7D556 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E4F4C64B275B706900B7D556 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		E4F4C64D275B721200B7D556 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 		E49D6F56275A429E00DE429F /* BookshelfIOS */ = {
 			isa = PBXGroup;
 			children = (
+				E4F4C64A275B705300B7D556 /* Models */,
 				E49D6F87275A639900DE429F /* ViewModels */,
 				E49D6F84275A5D5500DE429F /* Views */,
 				E49D6F83275A5D4500DE429F /* Services */,
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E49D6F85275A5FEC00DE429F /* LoginService.swift */,
+				E4F4C64D275B721200B7D556 /* BookService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -162,8 +170,17 @@
 			isa = PBXGroup;
 			children = (
 				E49D6F88275A63B400DE429F /* AuthenticationViewModel.swift */,
+				E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E4F4C64A275B705300B7D556 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4F4C64B275B706900B7D556 /* Book.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +318,9 @@
 				E4F4C647275AD7E800B7D556 /* BookListView.swift in Sources */,
 				E49D6F89275A63B400DE429F /* AuthenticationViewModel.swift in Sources */,
 				E49D6F5A275A429E00DE429F /* LoginView.swift in Sources */,
+				E4F4C650275B76AE00B7D556 /* BookViewModel.swift in Sources */,
+				E4F4C64E275B721200B7D556 /* BookService.swift in Sources */,
+				E4F4C64C275B706900B7D556 /* Book.swift in Sources */,
 				E49D6F58275A429E00DE429F /* BookshelfIOSApp.swift in Sources */,
 				E49D6F86275A5FEC00DE429F /* LoginService.swift in Sources */,
 			);
