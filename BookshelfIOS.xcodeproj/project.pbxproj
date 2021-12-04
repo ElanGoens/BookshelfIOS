@@ -22,6 +22,7 @@
 		E4F4C64C275B706900B7D556 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64B275B706900B7D556 /* Book.swift */; };
 		E4F4C64E275B721200B7D556 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64D275B721200B7D556 /* BookService.swift */; };
 		E4F4C650275B76AE00B7D556 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */; };
+		E4F4C652275BC93C00B7D556 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C651275BC93C00B7D556 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		E4F4C64B275B706900B7D556 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		E4F4C64D275B721200B7D556 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		E4F4C651275BC93C00B7D556 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				E49D6F81275A5B3100DE429F /* HomeView.swift */,
 				E4F4C646275AD7E800B7D556 /* BookListView.swift */,
 				E4F4C648275ADA2600B7D556 /* MainView.swift */,
+				E4F4C651275BC93C00B7D556 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				E4F4C64E275B721200B7D556 /* BookService.swift in Sources */,
 				E4F4C64C275B706900B7D556 /* Book.swift in Sources */,
 				E49D6F58275A429E00DE429F /* BookshelfIOSApp.swift in Sources */,
+				E4F4C652275BC93C00B7D556 /* ProfileView.swift in Sources */,
 				E49D6F86275A5FEC00DE429F /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

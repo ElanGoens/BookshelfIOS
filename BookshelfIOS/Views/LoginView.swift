@@ -53,6 +53,7 @@ struct InputFieldsView: View{
     var body: some View{
         NavigationView{
             VStack() {
+                
                 TextField("Username", text: $authenticationViewModel.username).padding().background(lightGreyColor).cornerRadius(5.0)
                     .navigationTitle("Login")
                 SecureField("Password", text: $authenticationViewModel.password).padding().background(lightGreyColor).cornerRadius(5.0)

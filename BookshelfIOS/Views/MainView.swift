@@ -8,22 +8,40 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @ObservedObject var authenticationViewModel: AuthenticationViewModel = .shared
     @StateObject private var bookViewModel = BookViewModel()
+    
     var body: some View {
-        TabView{
-            HomeView().tabItem(){
-                Text("Home")
+        VStack{
+            Button("Logout"){
+                
+                UserDefaults.standard.removeObject(forKey: "token")
+                authenticationViewModel.isAuthenticated = false
             }
-            
-            BookListView().tabItem(){
-                Text("Catalogus")
-            }.task {
-                bookViewModel.getAllBooks()
+            TabView{
+
+                HomeView().tabItem(){
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+                
+                BookListView().tabItem(){
+                    Image(systemName: "book")
+                    Text("Catalogus")
+                }.task {
+                    bookViewModel.getAllBooks()
+                }
+                ProfileView().tabItem(){
+                    Image(systemName: "person.circle")
+                    Text("Profile")
+                }
             }
+           
+           
+       }
         }
-       
-       
-   }
+        
     
 }
 

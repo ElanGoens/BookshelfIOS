@@ -10,7 +10,7 @@ import Foundation
 class AuthenticationViewModel : ObservableObject{
     var username: String = ""
     var password: String = ""
-    @Published var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "token")
+    @Published var isAuthenticated: Bool = (UserDefaults.standard.string(forKey: "token") != nil)
     @Published var authenticationFailed = false
     
     private init() {
@@ -21,13 +21,13 @@ class AuthenticationViewModel : ObservableObject{
     
     func login(){
         
-        let userDefaults = UserDefaults.standard
+       
         
         LoginService().login(username: username, password: password) { (result) in
             switch result{
             case .success(let token):
                 print(token)
-                userDefaults.setValue(token, forKey: "token")
+                UserDefaults.standard.set(token, forKey: "token")
                 
                 DispatchQueue.main.async {
                     self.isAuthenticated = true

@@ -23,11 +23,11 @@ struct BookListView: View {
                                 .frame(width: 150)
                                 
                         } else if phase.error != nil{
-                            Image("footer").resizable()
+                            Image(systemName: "book").resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 150)
                         } else{
-                            Image("footer").resizable()
+                            Image(systemName: "book").resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 150)
                         }
