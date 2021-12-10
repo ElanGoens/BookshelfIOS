@@ -1,19 +1,20 @@
 //
-//  BookService.swift
+//  UserService.swift
 //  BookshelfIOS
 //
-//  Created by Elan Goens on 04/12/2021.
+//  Created by Elan Goens on 10/12/2021.
 //
 
 import Foundation
 import SwiftUI
 
-class BookService {
-    var allBooks = [Book]()
+class UserService {
+    var allUsers = [User]()
+    
     var errorMessage : String = ""
     
-    func fetchAllBooks(completion: @escaping (Result<[Book], NetworkError>) -> ()){
-        guard let url = URL(string: "https://bookshelfapiwebiv.azurewebsites.net/api/Boeken")
+    func fetchCurrentUser(completion: @escaping (Result<User, NetworkError>) -> ()){
+        guard let url = URL(string: "https://bookshelfapiwebiv.azurewebsites.net/api/Customer")
         else{
             return
         }
@@ -26,13 +27,13 @@ class BookService {
                     
                     completion(.failure(.generalError))
                 } else{
-                    let books = try! JSONDecoder().self.decode(
-                        [Book].self, from: data!
+                    let user = try! JSONDecoder().self.decode(
+                        User.self, from: data!
                     )
                     DispatchQueue.main.async {
-                        self.allBooks = books
                         
-                        completion(.success(books))
+                        
+                        completion(.success(user))
                     }
             }
             }
@@ -47,6 +48,3 @@ class BookService {
     
 }
 
-enum NetworkError: Error{
-    case generalError
-}

@@ -13,40 +13,52 @@ struct BookListView: View {
     
     var body: some View {
         NavigationView{
-            List(bookViewModel.books){ book in
-                HStack{
-                    AsyncImage(url: URL(string: book.image)) { phase in
-                        if let image = phase.image{
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150)
-                                
-                        } else if phase.error != nil{
-                            Image(systemName: "book").resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150)
-                        } else{
-                            Image(systemName: "book").resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150)
-                        }
-                    }
-                    VStack{
-                        Text(book.titel)
-                            .fontWeight(.bold)
-                        Text(book.auteurNaam)
-                        
-
-                    }
-                    
+            
+            VStack{
+                if(bookViewModel.errorMessage != ""){
+                    Text("Error")
                 }
-        }.navigationTitle("Catalogus")
-        
+                
+                
+            
+            
+                List(bookViewModel.books){ book in
+                    
+                    HStack{
+                        AsyncImage(url: URL(string: book.image)) { phase in
+                            if let image = phase.image{
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150)
+                                    
+                            } else if phase.error != nil{
+                                Image(systemName: "book").resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150)
+                            } else{
+                                Image(systemName: "book").resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150)
+                            }
+                        }
+                        VStack{
+                            Text(book.titel)
+                                .fontWeight(.bold)
+                            Text(book.auteurNaam)
+                            
+
+                        }
+                        
+                    }
+            }.navigationTitle("Catalogus") 
+            }
+                
+            
             
         }.onAppear{
-            bookViewModel.getAllBooks()
             
+                bookViewModel.getAllBooks()
         }
     }
 }

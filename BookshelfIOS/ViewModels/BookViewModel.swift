@@ -9,14 +9,32 @@ import Foundation
 
 class BookViewModel : ObservableObject{
     @Published var books = [Book]()
-    
+    @Published var errorMessage = ""
     func getAllBooks(){
         print("Start fetch")
-        BookService().fetchAllBooks { (books) in
-            self.books = books
+        BookService().fetchAllBooks { (result) in
+            switch result{
+            case .success(let books):
+                print("Books: ")
+                print(books)
+                DispatchQueue.main.async {
+                    self.books = books
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+            
         }
         print("end fetch")
         self.books = BookService().allBooks
         print(books)
+        
+        self.errorMessage = BookService().errorMessage
+        
+        print("vm")
+        print(errorMessage)
     }
 }
