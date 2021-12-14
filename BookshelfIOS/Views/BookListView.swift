@@ -20,8 +20,8 @@ struct BookListView: View {
                 }
                 
                 
-            
-            
+                
+                
                 List(bookViewModel.books){ book in
                     
                     HStack{
@@ -31,7 +31,7 @@ struct BookListView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 150)
-                                    
+                                
                             } else if phase.error != nil{
                                 Image(systemName: "book").resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -47,18 +47,23 @@ struct BookListView: View {
                                 .fontWeight(.bold)
                             Text(book.auteurNaam)
                             
-
+                            
                         }
                         
+                        
                     }
-            }.navigationTitle("Catalogus") 
-            }
-                
+                    
+                }
+                .background(Color.black)
+                    .navigationTitle("Catalogus")
+                Spacer()
+            }.background(Color(red: 0.965, green: 0.961, blue: 0.939))
+            
             
             
         }.onAppear{
             
-                bookViewModel.getAllBooks()
+            bookViewModel.getAllBooks()
         }
     }
 }

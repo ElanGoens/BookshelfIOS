@@ -8,8 +8,39 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @StateObject private var userViewModel = UserViewModel()
+    
+    let columns = [GridItem(.fixed(100)),
+                   GridItem(.fixed(100))]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            if((userViewModel.user) != nil){
+                VStack{
+                    Image(systemName: "person.circle.fill")
+                    Text(userViewModel.user!.firstName + " " + userViewModel.user!.lastName)
+                    Text(userViewModel.user!.email)
+                    
+                    Spacer()
+                    
+                    LazyVGrid(columns: columns){
+                        ForEach(userViewModel.user!.boeken) { book in
+                            Text(book.titel)
+                            
+                        }
+                    }
+                    Spacer()
+                    
+                }
+                .background(Color(red: 0.965, green: 0.961, blue: 0.939))
+                .navigationTitle("Profile")
+            }
+            
+            
+        }.onAppear{
+            userViewModel.getCurrentUser()
+        }
     }
 }
 

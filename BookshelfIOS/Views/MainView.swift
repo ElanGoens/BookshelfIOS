@@ -36,7 +36,7 @@ struct MainView: View {
                     Image(systemName: "person.circle")
                     Text("Profile")
                 }
-            }
+            }.background(Color.white)
            
            
        }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct User : Decodable{
+struct User : Codable{
     var firstName: String
     var lastName: String
     var email: String
-    var books: [Book]
+    var boeken: [Book]
 }
