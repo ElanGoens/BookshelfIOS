@@ -14,11 +14,7 @@ struct MainView: View {
     
     var body: some View {
         VStack{
-            Button("Logout"){
-                
-                UserDefaults.standard.removeObject(forKey: "token")
-                authenticationViewModel.isAuthenticated = false
-            }
+            
             TabView{
 
                 HomeView().tabItem(){
