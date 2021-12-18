@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Review: Codable{
-
+struct Review: Identifiable, Codable{
+    var id: Int
     var boekId: Int
     var rating: Int
     var recensieTekst: String

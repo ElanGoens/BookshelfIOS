@@ -9,6 +9,8 @@ import Foundation
 
 class UserViewModel : ObservableObject{
     @Published var user: User?
+    var reviewTekst: String = ""
+    var rating: Int = 1
     
     @Published var errorMessage = ""
     func getCurrentUser(){
@@ -30,5 +32,28 @@ class UserViewModel : ObservableObject{
             
         }
         print("end fetch")
+    }
+    
+    func addBookToFavorites(boekId: Int){
+        UserService().addBookToFavorites(boekId: boekId){ (result) in
+            switch result{
+            case .success(let message): print(message)
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteBookFromFavorites(boekId: Int){
+        UserService().deleteFavoriteBook(boekId: boekId){ (result) in
+            switch result{
+            case .success(let message):
+                print(message)
+                self.user!.boeken = self.user!.boeken.filter({ book in
+                    book.id != boekId
+                })
+                
+            case .failure(let error): print(error.localizedDescription)
+            }
+        }
     }
 }

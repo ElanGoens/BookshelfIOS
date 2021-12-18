@@ -57,7 +57,7 @@ struct BookListView: View {
                     
                 }
                 .background(Color.black)
-                    .navigationTitle("Catalogus")
+                .navigationTitle("Catalogus").navigationBarTitleDisplayMode(.large)
                 Spacer()
             }.background(Color(red: 0.965, green: 0.961, blue: 0.939))
             

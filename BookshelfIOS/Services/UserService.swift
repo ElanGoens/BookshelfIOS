@@ -53,6 +53,73 @@ class UserService {
         
     }
     
+    func addBookToFavorites(boekId: Int, completion: @escaping (Result<String, NetworkError>) -> ()){
+        var authToken = "Bearer "
+        authToken += UserDefaults.standard.string(forKey: "token")!
+        
+        guard let url = URL(string: "https://bookshelfapiwebiv.azurewebsites.net/api/Customer/\(boekId)")
+        else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue(authToken, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request){ (data, response, error) in
+            
+            if let httpResponse = response as? HTTPURLResponse{
+                if httpResponse.statusCode != 204{
+                    
+                    completion(.failure(.generalError))
+                } else{
+                    
+                    
+                    
+                    DispatchQueue.main.async {
+                        
+                        
+                        completion(.success("Success"))
+                    }
+            }
+            }
+            
+        }.resume()
+    }
+    
+    func deleteFavoriteBook(boekId: Int, completion: @escaping (Result<String, NetworkError>) -> ()){
+        var authToken = "Bearer "
+        authToken += UserDefaults.standard.string(forKey: "token")!
+        guard let url = URL(string: "https://bookshelfapiwebiv.azurewebsites.net/api/Customer/\(boekId)")
+        else{
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue(authToken, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request){ (data, response, error) in
+            
+            if let httpResponse = response as? HTTPURLResponse{
+                if httpResponse.statusCode != 204{
+                    
+                    completion(.failure(.generalError))
+                } else{
+                    
+                    
+                    
+                    DispatchQueue.main.async {
+                        
+                        
+                        completion(.success("Success"))
+                    }
+            }
+            }
+            
+        }.resume()
+    }
+    
     
 }
 

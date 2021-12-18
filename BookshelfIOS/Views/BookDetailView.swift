@@ -10,6 +10,8 @@ import SwiftUI
 struct BookDetailView: View {
     
     @StateObject private var bookViewModel = BookViewModel()
+    @ObservedObject private var userViewModel = UserViewModel()
+    
     
     var book: Book?
     
@@ -34,6 +36,11 @@ struct BookDetailView: View {
                             .frame(width: 150)
                     }
                 }
+                Button("Voeg toe"){
+                    Task{
+                        userViewModel.addBookToFavorites(boekId: book!.id)
+                    }
+                }
                 HStack{
                     Text("Auteur: ").bold()
                     Text(book!.auteurNaam)
@@ -43,14 +50,32 @@ struct BookDetailView: View {
                     Text(book!.genre)
                 }
                 Divider()
+                
+                
+                
+                
                 ScrollView{
                     Text(book!.omschrijving).padding()
-                    Text("Reviews").bold()
-                    Divider()
                     
+                    Section{
+                        TextEditor(text: $userViewModel.reviewTekst)
+                        StarRatingView(rating: $userViewModel.rating)
+                    } header: {
+                        Text("Schrijf een review")
+                    }
                     
-                    
-                   
+                    if(!bookViewModel.reviews.isEmpty){
+                        
+                        Text("Reviews").bold()
+                        Divider()
+                        VStack{
+                            
+                            ForEach(bookViewModel.reviews){ review in
+                                StarRatingView(rating: .constant(review.rating), label: review.recensieTekst)
+                            }
+                        }
+                    }
+
                     
                 }.onAppear{
                     bookViewModel.getReviewsForBook(id: book!.id)
@@ -69,7 +94,7 @@ struct BookDetailView: View {
 
 struct StarRatingView: View{
     @Binding var rating: Int
-    var label: String
+    var label = ""
     var max = 5
     
     var offImage: Image?
@@ -79,17 +104,23 @@ struct StarRatingView: View{
     var onColor = Color.yellow
     
     var body: some View{
-        HStack{
-            if label.isEmpty == false{
-                Text(label)
+        VStack{
+            
+            HStack{
+                ForEach(1..<max + 1, id: \.self) { number in
+                    
+                    image(for: number)
+                        .foregroundColor(number > rating ? offColor : onColor)
+                        .onTapGesture{
+                            rating = number
+                            print(rating)
+                            
+                        }
+                    
+                }
             }
-            ForEach(1..<max + 1, id: \.self) { number in
-                image(for: number).foregroundColor(number > rating ? offColor : onColor)
-                    .onTapGesture{
-                        rating = number
-                    }
-                
-            }
+            Text(label).padding()
+            
         }
 
     }

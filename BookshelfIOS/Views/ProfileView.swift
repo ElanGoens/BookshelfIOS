@@ -29,33 +29,42 @@ struct ProfileView: View {
                     
                     Spacer()
                     Text("Favorite Books: ").padding()
-                    LazyVGrid(columns: columns){
-                        ForEach(userViewModel.user!.boeken) { book in
-                            VStack{
-                                AsyncImage(url: URL(string: book.image)) { phase in
-                                    if let image = phase.image{
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 75)
+                    ScrollView{
+                        LazyVGrid(columns: columns){
+                            ForEach(userViewModel.user!.boeken) { book in
+                                VStack{
+                                    AsyncImage(url: URL(string: book.image)) { phase in
+                                        if let image = phase.image{
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 75)
+                                            
+                                        } else if phase.error != nil{
+                                            Image(systemName: "book").resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 75)
+                                        } else{
+                                            Image(systemName: "book").resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 75)
+                                        }
+                                    }
+                                    Text(book.titel).font(.system(size: 12))
+                                    Button{
+                                        userViewModel.deleteBookFromFavorites(boekId: book.id)
                                         
-                                    } else if phase.error != nil{
-                                        Image(systemName: "book").resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 75)
-                                    } else{
-                                        Image(systemName: "book").resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 75)
+                                    } label: {
+                                        Image(systemName: "trash").padding()
                                     }
                                 }
-                                Text(book.titel).font(.system(size: 12))
+                                
+                                
                             }
-                            
-                            
                         }
                     }
-                    Spacer()
+                    
+                    Divider()
                     Button("Logout"){
                         
                         UserDefaults.standard.removeObject(forKey: "token")
