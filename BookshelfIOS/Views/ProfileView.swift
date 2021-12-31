@@ -24,11 +24,11 @@ struct ProfileView: View {
                     Image(systemName: "person.circle.fill").resizable()
                         .frame(width: 50.0, height: 50.0).padding()
                     Spacer()
-                    Text(userViewModel.user!.firstName + " " + userViewModel.user!.lastName)
+                    Text(userViewModel.user!.firstName + " " + userViewModel.user!.lastName).bold()
                     Text(userViewModel.user!.email)
                     
                     Spacer()
-                    Text("Favorite Books: ").padding()
+                    Text("Favoriete boeken: ").padding()
                     ScrollView{
                         LazyVGrid(columns: columns){
                             ForEach(userViewModel.user!.boeken) { book in
@@ -55,7 +55,7 @@ struct ProfileView: View {
                                         userViewModel.deleteBookFromFavorites(boekId: book.id)
                                         
                                     } label: {
-                                        Image(systemName: "trash").padding()
+                                        Image(systemName: "trash").foregroundColor(Color.red).padding()
                                     }
                                 }
                                 
@@ -64,18 +64,18 @@ struct ProfileView: View {
                         }
                     }
                     
-                    Divider()
+                    
                     Button("Logout"){
                         
                         UserDefaults.standard.removeObject(forKey: "token")
                         authenticationViewModel.isAuthenticated = false
-                    }.background(Color.white).padding()
+                    }.padding(.bottom).foregroundColor(Color.red)
                     
                     Divider()
                     
                 }
                 .background(Color(red: 0.965, green: 0.961, blue: 0.939))
-                .navigationTitle("Profile")
+                .navigationTitle("Profiel")
             }
             
             

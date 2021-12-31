@@ -8,18 +8,66 @@
 import Foundation
 
 class BookViewModel : ObservableObject{
+    @Published var book : Book?
     @Published var books = [Book]()
     @Published var reviews = [Review]()
     @Published var errorMessage = ""
+    @Published var filter = ""
     func getAllBooks(){
         print("Start fetch")
-        BookService().fetchAllBooks { (result) in
+        
+        if filter == "" {
+            BookService().fetchAllBooks { (result) in
+                switch result{
+                case .success(let books):
+                    print("Books: ")
+                    print(books)
+                    DispatchQueue.main.async {
+                        self.books = books
+                    }
+                    
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+                
+            }
+            
+            self.books = BookService().allBooks
+            self.errorMessage = BookService().errorMessage
+        }
+        
+        else {
+            BookService().fetchBooksWithFilter(filter: self.filter){ (result) in
+                switch result{
+                case .success(let books):
+                    print("Books: ")
+                    print(books)
+                    DispatchQueue.main.async {
+                        self.books = books
+                    }
+                    
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+                
+            }
+            
+            self.books = BookService().allBooks
+            self.errorMessage = BookService().errorMessage
+        }
+    }
+    
+    func getOneBook(){
+        BookService().fetchOneBook { (result) in
             switch result{
-            case .success(let books):
-                print("Books: ")
-                print(books)
+            case .success(let book):
+                
                 DispatchQueue.main.async {
-                    self.books = books
+                    self.book = book
                 }
                 
             case .failure(let error):
@@ -29,16 +77,9 @@ class BookViewModel : ObservableObject{
             }
             
         }
-        print("end fetch")
-        self.books = BookService().allBooks
-        print(books)
-        
-        self.errorMessage = BookService().errorMessage
-        
-        print("vm")
-        print(errorMessage)
     }
-    
+        
+ 
     func getReviewsForBook(id: Int){
         BookService().fetchAllReviewsForBook(id: id){ (result) in
             switch result{
@@ -53,4 +94,5 @@ class BookViewModel : ObservableObject{
             
         }
     }
+
 }

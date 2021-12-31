@@ -11,6 +11,12 @@ struct BookListView: View {
     
     @StateObject private var bookViewModel = BookViewModel()
     
+    init() {
+       
+        UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 0.965, green: 0.961, blue: 0.939))
+       UITableView.appearance().backgroundColor = UIColor(Color(red: 0.965, green: 0.961, blue: 0.939))
+    }
+    
     var body: some View {
         NavigationView{
             
@@ -19,12 +25,21 @@ struct BookListView: View {
                     Text("Error")
                 }
                 
-                
+                TextField("Filter", text: $bookViewModel.filter) { changed in
+                    if changed{
+                        
+                    } else{
+                        bookViewModel.getAllBooks()
+                    }
+                }.textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
                 
                 List(bookViewModel.books){ book in
+                    
                     NavigationLink(destination: BookDetailView(book: book)){
                         HStack{
+                            
                             AsyncImage(url: URL(string: book.image)) { phase in
                                 if let image = phase.image{
                                     image
@@ -53,12 +68,11 @@ struct BookListView: View {
                             
                         }
                     }
-                    
-                    
                 }
                 .background(Color.black)
                 .navigationTitle("Catalogus").navigationBarTitleDisplayMode(.large)
                 Spacer()
+                Divider()
             }.background(Color(red: 0.965, green: 0.961, blue: 0.939))
             
             

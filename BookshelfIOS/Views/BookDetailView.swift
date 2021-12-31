@@ -36,11 +36,7 @@ struct BookDetailView: View {
                             .frame(width: 150)
                     }
                 }
-                Button("Voeg toe"){
-                    Task{
-                        userViewModel.addBookToFavorites(boekId: book!.id)
-                    }
-                }
+                
                 HStack{
                     Text("Auteur: ").bold()
                     Text(book!.auteurNaam)
@@ -49,6 +45,14 @@ struct BookDetailView: View {
                     Text("Genre: ").bold()
                     Text(book!.genre)
                 }
+                NavigationLink(destination: ProfileView()){
+                    Button("Voeg toe aan favorieten"){
+                        Task{
+                            userViewModel.addBookToFavorites(boekId: book!.id)
+                        }
+                    }
+                }
+                
                 Divider()
                 
                 
