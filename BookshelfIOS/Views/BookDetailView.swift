@@ -11,6 +11,7 @@ struct BookDetailView: View {
     
     @StateObject private var bookViewModel = BookViewModel()
     @ObservedObject private var userViewModel = UserViewModel()
+    @State private var rating = 1
     
     
     var book: Book?
@@ -45,25 +46,30 @@ struct BookDetailView: View {
                     Text("Genre: ").bold()
                     Text(book!.genre)
                 }
-                NavigationLink(destination: ProfileView()){
-                    Button("Voeg toe aan favorieten"){
-                        Task{
-                            userViewModel.addBookToFavorites(boekId: book!.id)
+                
+                    HStack{
+                        Text("Voeg toe aan favorieten: ")
+                        Button{
+                            Task{
+                                userViewModel.addBookToFavorites(boekId: book!.id)
+                            }
+                        } label: {
+                            Image(systemName: "heart.fill").foregroundColor(Color.red)
                         }
                     }
-                }
-                
+
                 Divider()
-                
-                
-                
-                
+
                 ScrollView{
                     Text(book!.omschrijving).padding()
                     
                     Section{
-                        TextEditor(text: $userViewModel.reviewTekst)
-                        StarRatingView(rating: $userViewModel.rating)
+                        TextEditor(text: $bookViewModel.reviewTekst).cornerRadius(10).padding()
+                        StarRatingView(rating: $rating)
+                        Button("Plaats review"){
+                            bookViewModel.placeReview(rating: self.rating, boekId: book!.id)
+                            
+                        }.padding(.bottom)
                     } header: {
                         Text("Schrijf een review")
                     }
@@ -76,6 +82,7 @@ struct BookDetailView: View {
                             
                             ForEach(bookViewModel.reviews){ review in
                                 StarRatingView(rating: .constant(review.rating), label: review.recensieTekst)
+                                Divider().padding()
                             }
                         }
                     }
@@ -112,18 +119,15 @@ struct StarRatingView: View{
             
             HStack{
                 ForEach(1..<max + 1, id: \.self) { number in
-                    
                     image(for: number)
                         .foregroundColor(number > rating ? offColor : onColor)
                         .onTapGesture{
                             rating = number
                             print(rating)
-                            
                         }
-                    
                 }
             }
-            Text(label).padding()
+            Text(label).padding(.top)
             
         }
 

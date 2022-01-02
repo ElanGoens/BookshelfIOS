@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class BookViewModel : ObservableObject{
     @Published var book : Book?
@@ -13,6 +14,7 @@ class BookViewModel : ObservableObject{
     @Published var reviews = [Review]()
     @Published var errorMessage = ""
     @Published var filter = ""
+    var reviewTekst: String = ""
     func getAllBooks(){
         print("Start fetch")
         
@@ -79,7 +81,25 @@ class BookViewModel : ObservableObject{
         }
     }
         
- 
+    func placeReview(rating: Int, boekId: Int){
+        print(rating)
+        print(boekId)
+        print(reviewTekst)
+        
+        UserService().placeReview(rating: rating, reviewTekst: reviewTekst, boekId: boekId){
+            (result) in
+                switch result{
+                case .success(let userId):
+                    print(userId)
+                    let lastId = self.reviews.last!.id
+                    self.reviews.append(Review(id: lastId+1, boekId: boekId, rating: rating, recensieTekst: self.reviewTekst, customerId: Int(userId)!))
+                    self.getReviewsForBook(id: boekId)
+                case .failure(let error): print(error.localizedDescription)
+                    self.getReviewsForBook(id: boekId)
+                }
+        }
+    }
+    
     func getReviewsForBook(id: Int){
         BookService().fetchAllReviewsForBook(id: id){ (result) in
             switch result{

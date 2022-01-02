@@ -28,6 +28,7 @@
 		E4F4C64E275B721200B7D556 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64D275B721200B7D556 /* BookService.swift */; };
 		E4F4C650275B76AE00B7D556 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */; };
 		E4F4C652275BC93C00B7D556 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4C651275BC93C00B7D556 /* ProfileView.swift */; };
+		E4F9E0BA2780864500462426 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F9E0B92780864500462426 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		E4F4C64D275B721200B7D556 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		E4F4C64F275B76AE00B7D556 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		E4F4C651275BC93C00B7D556 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E4F9E0B92780864500462426 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				E4F4C648275ADA2600B7D556 /* MainView.swift */,
 				E4F4C651275BC93C00B7D556 /* ProfileView.swift */,
 				E4D058DB276A32B800841882 /* BookDetailView.swift */,
+				E4F9E0B92780864500462426 /* RegisterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				E4C253E72763E1F300409B77 /* UserViewModel.swift in Sources */,
 				E4F4C650275B76AE00B7D556 /* BookViewModel.swift in Sources */,
 				E4D058DC276A32B800841882 /* BookDetailView.swift in Sources */,
+				E4F9E0BA2780864500462426 /* RegisterView.swift in Sources */,
 				E4C253E52763BF5300409B77 /* UserService.swift in Sources */,
 				E4D058DE276A40E500841882 /* Review.swift in Sources */,
 				E4F4C64E275B721200B7D556 /* BookService.swift in Sources */,

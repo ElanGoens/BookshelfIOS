@@ -37,7 +37,7 @@ struct BookListView: View {
                 
                 List(bookViewModel.books){ book in
                     
-                    NavigationLink(destination: BookDetailView(book: book)){
+                    NavigationLink(destination: BookDetailView( book: book)){
                         HStack{
                             
                             AsyncImage(url: URL(string: book.image)) { phase in

@@ -23,23 +23,9 @@ struct LoginView: View {
                     InputFieldsView()
                         .navigationTitle("Login")
                         .offset(y: -60)
-                    if(authenticationViewModel.authenticationFailed){
-                        Text("Your credentials are incorrect")
-                    }
-               
-                    NavigationLink(destination: MainView(), label: {
-                        Text("Next screen").bold().frame(width: 280, height: 50)
-                            .background(Color.blue)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(10)
-                    })
-                    
-                    
+                
                 }
             }
-            
-
-        
 
     }
 }
@@ -49,19 +35,44 @@ struct InputFieldsView: View{
     
     
     @ObservedObject var authenticationViewModel: AuthenticationViewModel = .shared
+    @State private var email: String = ""
+    @State private var password: String = ""
     
     var body: some View{
         NavigationView{
             VStack() {
+                HStack{
+                    Spacer()
+                    Spacer()
+                    TextField("Email", text: $email).padding().background(lightGreyColor).cornerRadius(5.0)
+                        .navigationTitle("Login")
+                    Spacer()
+                    Spacer()
+                }
+                HStack{
+                    Spacer()
+                    Spacer()
+                    SecureField("Password", text: $password).padding().background(lightGreyColor).cornerRadius(5.0)
+                    Spacer()
+                    Spacer()
+                }
                 
-                TextField("Username", text: $authenticationViewModel.username).padding().background(lightGreyColor).cornerRadius(5.0)
-                    .navigationTitle("Login")
-                SecureField("Password", text: $authenticationViewModel.password).padding().background(lightGreyColor).cornerRadius(5.0)
                 Button("Login"){
-                    print(authenticationViewModel.username)
-                    print(authenticationViewModel.password)
-                    authenticationViewModel.login()
+                    print(email)
+                    print(password)
+                    authenticationViewModel.login(email: email, password: password)
                     
+                
+                    
+                }
+                NavigationLink(destination: RegisterView(), label: {
+                    Text("Nog geen account? Registreer hier.").bold().frame(width: 350, height: 50)
+                        .background(Color.blue)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(10)
+                })
+                if(authenticationViewModel.authenticationFailed){
+                    Text("Uw gebruikersnaam of wachtwoord is incorrect").foregroundColor(Color.red)
                 }
             }
         }

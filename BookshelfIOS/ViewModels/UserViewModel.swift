@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserViewModel : ObservableObject{
     @Published var user: User?
-    var reviewTekst: String = ""
-    var rating: Int = 1
     
     @Published var errorMessage = ""
+    
     func getCurrentUser(){
         print("Start fetch")
         UserService().fetchCurrentUser { (result) in
@@ -33,6 +33,8 @@ class UserViewModel : ObservableObject{
         }
         print("end fetch")
     }
+    
+    
     
     func addBookToFavorites(boekId: Int){
         UserService().addBookToFavorites(boekId: boekId){ (result) in
