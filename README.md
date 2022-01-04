@@ -1,11 +1,13 @@
 # Bookshelf IOS app
-Elan Goens
-3A1
-Lector: Steven Van Impe
+Elan Goens\
+3A1\
+Lector: Steven Van Impe\
+Gebruikte technologie: SwiftUI
 
 ## Inloggegevens
 - username: student@hogent.be
 - password: P@ssword1111
+
 Of maak zelf een account aan!
 
 ## Samenvatting
