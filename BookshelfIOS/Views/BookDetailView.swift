@@ -103,6 +103,7 @@ struct BookDetailView: View {
     }
 }
 
+//Source: https://www.hackingwithswift.com/books/ios-swiftui/adding-a-custom-star-rating-component
 struct StarRatingView: View{
     @Binding var rating: Int
     var label = ""

@@ -16,14 +16,10 @@ class BookViewModel : ObservableObject{
     @Published var filter = ""
     var reviewTekst: String = ""
     func getAllBooks(){
-        print("Start fetch")
-        
         if filter == "" {
             BookService().fetchAllBooks { (result) in
                 switch result{
                 case .success(let books):
-                    print("Books: ")
-                    print(books)
                     DispatchQueue.main.async {
                         self.books = books
                     }
@@ -44,8 +40,6 @@ class BookViewModel : ObservableObject{
             BookService().fetchBooksWithFilter(filter: self.filter){ (result) in
                 switch result{
                 case .success(let books):
-                    print("Books: ")
-                    print(books)
                     DispatchQueue.main.async {
                         self.books = books
                     }
@@ -82,15 +76,11 @@ class BookViewModel : ObservableObject{
     }
         
     func placeReview(rating: Int, boekId: Int){
-        print(rating)
-        print(boekId)
-        print(reviewTekst)
-        
+
         UserService().placeReview(rating: rating, reviewTekst: reviewTekst, boekId: boekId){
             (result) in
                 switch result{
                 case .success(let userId):
-                    print(userId)
                     let lastId = self.reviews.last!.id
                     self.reviews.append(Review(id: lastId+1, boekId: boekId, rating: rating, recensieTekst: self.reviewTekst, customerId: Int(userId)!))
                     self.getReviewsForBook(id: boekId)

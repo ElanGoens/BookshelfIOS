@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0)
+let lightGrey = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0)
 
 
 struct LoginView: View {
@@ -44,7 +44,7 @@ struct InputFieldsView: View{
                 HStack{
                     Spacer()
                     Spacer()
-                    TextField("Email", text: $email).padding().background(lightGreyColor).cornerRadius(5.0)
+                    TextField("Email", text: $email).padding().background(lightGrey).cornerRadius(5.0)
                         .navigationTitle("Login")
                     Spacer()
                     Spacer()
@@ -52,7 +52,7 @@ struct InputFieldsView: View{
                 HStack{
                     Spacer()
                     Spacer()
-                    SecureField("Password", text: $password).padding().background(lightGreyColor).cornerRadius(5.0)
+                    SecureField("Password", text: $password).padding().background(lightGrey).cornerRadius(5.0)
                     Spacer()
                     Spacer()
                 }

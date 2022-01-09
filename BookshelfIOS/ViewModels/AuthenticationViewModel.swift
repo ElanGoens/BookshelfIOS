@@ -27,7 +27,7 @@ class AuthenticationViewModel : ObservableObject{
         LoginService().login(username: email, password: password) { (result) in
             switch result{
             case .success(let token):
-                print(token)
+                
                 UserDefaults.standard.set(token, forKey: "token")
                 
                 DispatchQueue.main.async {
@@ -80,7 +80,7 @@ class AuthenticationViewModel : ObservableObject{
         LoginService().register(firstName: firstName, lastName: lastName, username: email, password: password, passwordConfirmation: confirmPassword){ (result) in
             switch result{
             case .success(let token):
-                print(token)
+                
                 UserDefaults.standard.set(token, forKey: "token")
                 
                 DispatchQueue.main.async {
@@ -102,6 +102,7 @@ class AuthenticationViewModel : ObservableObject{
     
 }
 
+//Source: https://stackoverflow.com/questions/29535792/check-if-a-string-contains-at-least-a-uppercase-letter-a-digit-or-a-special-ch?rq=1
 extension String {
     func isValidPassword() -> Bool {
         let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[ !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~])[A-Za-z\\d !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]{8,}"

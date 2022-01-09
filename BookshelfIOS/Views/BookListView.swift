@@ -12,9 +12,9 @@ struct BookListView: View {
     @StateObject private var bookViewModel = BookViewModel()
     
     init() {
-       
+        // Deze lijnen zijn om de achtergrondkleur van de List correct in te stellen
         UITableViewCell.appearance().backgroundColor = UIColor(Color(red: 0.965, green: 0.961, blue: 0.939))
-       UITableView.appearance().backgroundColor = UIColor(Color(red: 0.965, green: 0.961, blue: 0.939))
+        UITableView.appearance().backgroundColor = UIColor(Color(red: 0.965, green: 0.961, blue: 0.939))
     }
     
     var body: some View {

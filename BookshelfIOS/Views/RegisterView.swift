@@ -41,7 +41,7 @@ struct InputFieldsRegisterView: View{
                 HStack{
                     Spacer()
                     Spacer()
-                    TextField("Voornaam", text: $firstName).padding().background(lightGreyColor).cornerRadius(5.0)
+                    TextField("Voornaam", text: $firstName).padding().background(lightGrey).cornerRadius(5.0)
                         .navigationTitle("Registreer")
                     Spacer()
                     Spacer()
@@ -49,28 +49,28 @@ struct InputFieldsRegisterView: View{
                 HStack{
                     Spacer()
                     Spacer()
-                    TextField("Familienaam", text: $lastName).padding().background(lightGreyColor).cornerRadius(5.0)
+                    TextField("Familienaam", text: $lastName).padding().background(lightGrey).cornerRadius(5.0)
                     Spacer()
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Spacer()
-                    TextField("Email", text: $email).padding().background(lightGreyColor).cornerRadius(5.0)
+                    TextField("Email", text: $email).padding().background(lightGrey).cornerRadius(5.0)
                     Spacer()
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Spacer()
-                    SecureField("Wachtwoord", text: $password).padding().background(lightGreyColor).cornerRadius(5.0)
+                    SecureField("Wachtwoord", text: $password).padding().background(lightGrey).cornerRadius(5.0)
                     Spacer()
                     Spacer()
                 }
                 HStack{
                     Spacer()
                     Spacer()
-                    SecureField("Herhaal Wachtwoord", text: $confirmPassword).padding().background(lightGreyColor).cornerRadius(5.0)
+                    SecureField("Herhaal Wachtwoord", text: $confirmPassword).padding().background(lightGrey).cornerRadius(5.0)
                     Spacer()
                     Spacer()
                 }

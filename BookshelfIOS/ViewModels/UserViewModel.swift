@@ -18,8 +18,6 @@ class UserViewModel : ObservableObject{
         UserService().fetchCurrentUser { (result) in
             switch result{
             case .success(let user):
-                print("User: ")
-                print(user)
                 DispatchQueue.main.async {
                     self.user = user
                 }
