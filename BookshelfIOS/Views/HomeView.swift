@@ -21,7 +21,8 @@ struct HomeView: View {
             }
             .background(Color(red: 0.965, green: 0.961, blue: 0.939))
             .navigationTitle("Bookshelf")
-        }
+        }.phoneOnlyStackNavigationView()
+        
     }
 }
 
@@ -82,6 +83,16 @@ struct NewItemView: View{
         .padding(20.0)
         .onAppear{
             bookViewModel.getOneBook()
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder func phoneOnlyStackNavigationView() -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            self.navigationViewStyle(.stack)
+        } else {
+            self
         }
     }
 }

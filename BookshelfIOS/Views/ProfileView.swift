@@ -79,7 +79,7 @@ struct ProfileView: View {
             }
             
             
-        }.onAppear{
+        }.phoneOnlyStackNavigationView().onAppear{
             userViewModel.getCurrentUser()
         }
     }
